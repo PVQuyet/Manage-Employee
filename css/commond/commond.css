@@ -1,0 +1,28 @@
+.m-row{
+    margin-top: 4px;
+    width: 100%;
+}
+.m-row.m-row-flex{
+    display: flex;
+}
+.m-label{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.m-col+.m-col{
+    margin-left: 10px;
+}
+
+.text-align-center{
+    text-align: center;
+}
+.text-align-left{
+    text-align: left;
+}
+.text-align-right{
+    text-align: right;
+}
+.m-line{
+    margin-top: 10px;
+    border: 3px solid #333;
+}

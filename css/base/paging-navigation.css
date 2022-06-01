@@ -1,0 +1,94 @@
+.m-page-navigations{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.m-page-navigations .m-nav-left{
+    display: flex;
+    color: #BBBBBB;
+    flex: 1;
+    justify-items: center;
+}
+.m-page-navigations .m-nav-left b{
+    color: #333;
+    padding: 0 3px;
+}
+/* center */
+.m-page-navigations .m-nav-center{
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    box-sizing: border-box;
+}
+/* center first */
+.m-page-navigations .m-paging-first{
+    background-image: url('../../resource/icon/btn-firstpage.svg');
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.m-page-navigations .m-paging-first:hover{
+    background-color:  #BBBBBB;
+}
+/* center prev */
+.m-page-navigations .m-paging-prev{
+    background-image: url('../../resource/icon/btn-prev-page.svg');
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.m-page-navigations .m-paging-prev:hover{
+    background-color:  #BBBBBB;
+}
+/* center number */
+.m-page-navigations .m-nav-center .m-paging-number{
+    display: flex;
+    padding-left: 10px;
+}
+.m-page-navigations .m-nav-center .m-paging-number .page-number{
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: unset;
+    margin-left: 10px;
+    background-color: #019160;
+    justify-content: center;
+    line-height: 32px;
+    cursor: pointer;
+}
+.m-page-navigations .m-nav-center .m-paging-number .page-number:hover{
+    background-color: #BBBBBB;
+}
+/* center next */
+.m-page-navigations .m-paging-next{
+    background-image: url('../../resource/icon/btn-next-page.svg');
+    margin-left: 20px;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.m-page-navigations .m-paging-next:hover{
+    background-color:  #BBBBBB;
+}
+/* center last */
+.m-page-navigations .m-paging-last{
+    background-image: url('../../resource/icon/btn-lastpage.svg');
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.m-page-navigations .m-paging-last:hover{
+    background-color:  #BBBBBB;
+}
+/* right */
+.m-page-navigations .m-nav-right{
+    display: flex;
+    flex: 1;
+    justify-content: end;
+}

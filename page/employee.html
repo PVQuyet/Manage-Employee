@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUẢN LÝ NHÂN VIÊN NHÀ HÀNG</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../resource/font/fontawesome-5.15.1/css/all.css">
+</head>
+<body">
+    <div class="navbar">
+        <div class="m-logo-box">
+            <div class="m-toggle"></div>
+            <div class="m-logo-page"></div>
+        </div>
+        <div class="m-navbar-box">
+            <div class="m-menu-item menu-item-active">
+                <div class="m-menu-item-icon m-icon icon-dasboard"></div>
+                <div class="m-menu-item-text">Tổng quan</div>
+            </div>
+            <div class="m-menu-item">
+                <div class="m-menu-item-icon m-icon icon-buy"></div>
+                <div class="m-menu-item-text">Bán hàng</div>
+            </div>
+            <div class="m-menu-item">
+                <div class="m-menu-item-icon m-icon icon-customer"></div>
+                <div class="m-menu-item-text">Danh sách khách hàng</div>
+            </div>
+            <div class="m-menu-item">
+                <div class="m-menu-item-icon m-icon icon-setting"></div>
+                <div class="m-menu-item-text">Cài đặt</div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header-left">
+            <div class="header-left-text">Nhà hàng Biển Đông</div>
+            <div class="icon-down"><i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="header-right">
+            <div class="header-right-img"></div>
+            <div class="header-right-text">Phan Văn Quyết</div>
+            <div class="icon-dot"><i class="fas fa-ellipsis-h"></i></i></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-header">
+            <div class="content-header-text">Danh sách nhân viên</div>
+            <button id="btnAddEmployee" class="m-btn">
+                <div class="m-btn-icon"><i class="fas fa-user-plus"></i></div>
+                <div class="m-btn-text">Thêm nhân viên</div>
+            </button>
+        </div>
+        <div class="content-tools">
+            <div class="contect-tools-left">
+                <input class="m-input m-input-icon m-tools-looking" type="text"
+                    placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại">
+                <!-- <select class="m-combobox" name="" id="">
+                    <option value="">Tất cả phòng ban</option>
+                    <option value="">Nữ</option>
+                </select> -->
+                <combobox api="http://cukcuk.manhnv.net/api/v1/Departments" propertyDisplay="DepartmentName"
+                    propertyValue="DepartmentId" placeholder="Tất cả phòng ban"> </combobox>
+                <!-- <div class="mcombobox m-combobox-50-width">
+                    <input class="m-combobox" type="text" class="m-combobx-input" placeholder="Tất cả phòng ban">
+                    <button class="m-combobox-button"><i class="fas fa-chevron-down"></i></button>
+                    <div class="m-combobox-data m-combobox-data-220-width">
+                        <div class="m-combobox-item" value="0">Nam</div>
+                        <div class="m-combobox-item" value="1">Nữ</div>
+                    </div>
+                </div> -->
+                <!-- <select class="m-combobox" name="" id="">
+                    <option value="">Tất cả vị trí</option>
+                    <option value="">Nữ</option>
+                </select> -->
+                <combobox api="http://cukcuk.manhnv.net/api/v1/Positions" propertyDisplay="PositionName"
+                    propertyValue="PositionIP" placeholder="Tất cả vị trí"> </combobox>
+                <!-- <div class="mcombobox m-combobox-50-width">
+                    <input class="m-combobox" type="text" class="m-combobx-input" placeholder="Tất cả vị trí">
+                    <button class="m-combobox-button"><i class="fas fa-chevron-down"></i></button>
+                    <div class="m-combobox-data m-combobox-data-220-width">
+                        <div class="m-combobox-item" value="0">Nam</div>
+                        <div class="m-combobox-item" value="1">Nữ</div>
+                    </div>
+                </div> -->
+
+            </div>
+            <div class="contect-tools-right">
+                <button id="btnDelete" class="m-btn-save">
+                    <div class="m-btn-icon"><i class="fas fa-trash-alt"></i></div>
+                </button>
+                <button id="loadEmployeePage" class="m-btn-load">
+                    <div class="m-btn-icon"><i class="fas fa-spinner"></i></div>
+                </button>
+            </div>
+        </div>
+        <div class="m-row">
+            <div class="m-grid">
+                <table id="tblEmployee" class="m-table" border="1">
+                    <thead>
+                        <tr>
+                            <th class="text-align-left">
+                                <div class="m-head-text">Mã nhân viên<i class="fas fa-sort"
+                                        style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-left">
+                                <div class="m-head-text">Họ và tên<i class="fas fa-sort" style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-center">
+                                <div class="m-head-text">Ngày sinh<i class="fas fa-sort" style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-center">
+                                <div class="m-head-text">Giới tính<i class="fas fa-sort" style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-left">
+                                <div class="m-head-text">Điện thoại<i class="fas fa-sort"
+                                        style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-left">
+                                <div class="m-head-text">Email<i class="fas fa-sort" style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-left">
+                                <div class="m-head-text">Chức vụ<i class="fas fa-sort" style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-left">
+                                <div class="m-head-text">Phòng ban<i class="fas fa-sort" style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-right">
+                                <div class="m-head-text">Mức lương cơ bản<i class="fas fa-sort"
+                                        style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                            <th class="text-align-left">
+                                <div class="m-head-text">Địa chỉ<i class="fas fa-sort" style="padding-left: 8px;"></i>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr>
+                        <tr>
+                            <td class="text-align-left">0123455513</td>
+                            <td class="text-align-left">Nguyễn Hương Giang</td>
+                            <td class="text-align-center">11/08/1978</td>
+                            <td class="text-align-center">Nữ</td>
+                            <td class="text-align-left">0345698745</td>
+                            <td class="text-align-left">abc@gmail.com</td>
+                            <td class="text-align-left">Tổng giám đóc</td>
+                            <td class="text-align-left">Khối sản xuất</td>
+                            <td class="text-align-right">9.500.000</td>
+                            <td class="text-align-left">Đang thử việc</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <div class="m-line"></div>
+                <div class="m-page-navigations">
+                    <div class="m-nav-left">Hiển thị <b>01-20/123</b> lao động</div>
+                    <div class="m-nav-center">
+                        <div class="m-paging-first"></div>
+                        <div class="m-paging-prev"></div>
+                        <div class="m-paging-number">
+                            <div class="page-number">1</div>
+                            <div class="page-number">2</div>
+                            <div class="page-number">3</div>
+                            <div class="page-number">4</div>
+                            <div class="page-number">5</div>
+                            <div class="page-number">6</div>
+                            <div class="page-number">7</div>
+                            <div class="page-number">8</div>
+                            <div class="page-number">9</div>
+                            <div class="page-number">10</div>
+                        </div>
+                        <div class="m-paging-next"></div>
+                        <div class="m-paging-last"></div>
+                    </div>
+                    <div class="m-nav-right">
+                        <!-- <select name="" id="" class="m-combobox">
+                            <option value="">20 lao động/trang</option>
+                            <option value="">30 lao động/trang</option>
+                            <option value="">40 lao động/trang</option>
+                            <option value="">50 lao động/trang</option>
+                        </select> -->
+                        <div class="mcombobox">
+                            <input class="m-combobox m-combobox-151-width" type="text" class="m-combobx-input"
+                                placeholder="Nhân viên/trang">
+                            <button class="m-combobox-button btn-no-border"><i class="fas fa-chevron-down"></i></button>
+                            <div class="m-combobox-data">
+                                <div class="m-combobox-item" value="0">Nam</div>
+                                <div class="m-combobox-item" value="1">Nữ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dlgPopup" class="m-dialog">
+        <div class="m-row">
+            <div class="m-popup m-popup-auto-width">
+                <div class="m-popup-header">
+                    <div class="m-popup-header-title">Thông tin nhân viên</div>
+                    <div id="btnCloseDialog" class="m-popup-close"><i class="fas fa-times"></i></div>
+                </div>
+                <div class="m-popup-content">
+                    <div>
+                        <div class="m-row m-row-flex">
+                            <div class="m-col">
+                                <div class="m-label">Mã nhân viên</div>
+                                <input class="m-input" type="text" id="txtEmployeeCode" fieldName="EmployeeCode">
+                            </div>
+                            <div class="m-col">
+                                <div class="m-label">Họ và tên</div>
+                                <input class="m-input" type="text" id="txtFullName" fieldName="FullName">
+                            </div>
+                        </div>
+                        <div class="m-row m-row-flex">
+                            <div class="m-col">
+                                <div class="m-label">Ngày sinh</div>
+                                <input class="m-input" type="date" id="dbDateOfBirth" fieldName="DateOfBirth">
+                            </div>
+                            <div class="m-col">
+                                <div class="m-label">Giới tính</div>
+                                <!-- <select class="m-combobox m-combobox-auto-width" name="" id="">
+                                    <option value="">Nam</option>
+                                    <option value="">Nữ</option>
+                                </select> -->
+                                <combobox id="cbxGender" fieldName="Gender" a="GenderName">
+                                    <item value="1">Nam</item>
+                                    <item value="0">Nữ</item>    
+                                </combobox>
+                                <!-- <div class="mcombobox">
+                                    <input class="m-combobox" type="text" class="m-combobx-input">
+                                    <button class="m-combobox-button"><i class="fas fa-chevron-down"></i></button>
+                                    <div class="m-combobox-data">
+                                        <div class="m-combobox-item" value="0">Nam</div>
+                                        <div class="m-combobox-item" value="1">Nữ</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="m-row m-row-flex">
+                            <div class="m-col">
+                                <div class="m-label">Điện thoại</div>
+                                <input class="m-input" type="text" id="txtPhoneNumber" fieldName="PhoneNumber">
+                            </div>
+                            <div class="m-col">
+                                <div class="m-label">Email</div>
+                                <input class="m-input" type="text" id="txtEmail" fieldName="Email">
+                            </div>
+                        </div>
+                        <div class="m-row m-row-flex">
+                            <div class="m-col">
+                                <div class="m-label">Chức vụ</div>
+
+                                <combobox api="http://cukcuk.manhnv.net/api/v1/Positions" propertyDisplay="PositionName"
+                                    propertyValue="PositionId" fieldName="PositionId" a="PositionName"> </combobox>
+                                <!-- <select class="m-combobox m-combobox-auto-width" name="" id="">
+                                    <option value="">Nam</option>
+                                    <option value="">Nữ</option>
+                                </select> -->
+                                <!-- <div class="mcombobox">
+                                    <input class="m-combobox" type="text" class="m-combobx-input">
+                                    <button class="m-combobox-button"><i class="fas fa-chevron-down"></i></button>
+                                    <div class="m-combobox-data">
+                                        <div class="m-combobox-item" value="0">Nam</div>
+                                        <div class="m-combobox-item" value="1">Nữ</div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <div class="m-col">
+                                <div class="m-label">Phòng ban</div>
+
+                                <combobox api="http://cukcuk.manhnv.net/api/v1/Departments"
+                                    propertyDisplay="DepartmentName" propertyValue="DepartmentId" fieldName="DepartmentId" a="DepartmentName"> </combobox>
+                                <!-- <select class="m-combobox m-combobox-auto-width" name="" id="">
+                                    <option value="">Nam</option>
+                                    <option value="">Nữ</option>
+                                </select> -->
+                                <!-- <div id="cmbDepartment" class="mcombobox" api="http://cukcuk.manhnv.net/api/v1/Departments" propertyDisplay="DepartmentName" propertyValue="DepartmentId">
+                                    <input class="m-combobox" type="text" class="m-combobx-input">
+                                    <button class="m-combobox-button"><i class="fas fa-chevron-down"></i></button>
+                                    <div class="m-combobox-data">
+                                        <div class="m-combobox-item" value="0">Nam</div>
+                                        <div class="m-combobox-item" value="1">Nữ</div>
+                                        <div class="m-combobox-item" value="0">Nam</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="m-row m-row-flex">
+                            <div class="m-col">
+                                <div class="m-label">Mức lương</div>
+                                <input class="m-input" type="number" id="numSalary" fieldName="Salary">
+                            </div>
+                            <div class="m-col">
+                                <div class="m-label">Địa chỉ</div>
+                                <input class="m-input" type="text" id="txtAddress" fieldName="Address">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-popup-footer">
+                    <button id="btnClose" class="m-btn m-btn-nobackground">Hủy</button>
+                    <button id="btnSave" class="m-btn">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast-smg-show">
+        <div id="m-toast-msg" class="m-toast-msg">
+            <div class="toast-msg-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="toast-msg-text">Xóa thành công</div>
+            <div class="toast-msg-close"><i class="fas fa-times"></i></div>
+        </div>
+    </div>
+
+
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/lib/combobox/combobox.js"></script>
+    <script src="/js/base/enum.js"></script>
+    <script src="/js/base/commond.js"></script>
+    <script src="/js/page/emplyee.js"></script>
+    <!-- <script src="/js/employee.js"></script> -->
+    </body>
+
+</html>

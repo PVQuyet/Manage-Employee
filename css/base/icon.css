@@ -1,0 +1,24 @@
+.m-icon{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.m-icon-warming{
+color: yellow;
+}
+.m-menu-item-icon{
+    width: 20px;
+    height: 20px;
+}
+.icon-setting{
+    background-image: url('../../resource/icon/setting.png');
+}
+.icon-dasboard{
+    background-image: url('../../resource/icon/dashboard.png');
+}
+.icon-customer{
+    background-image: url('../../resource/icon/dic-employee.png');
+}
+.icon-buy{
+    background-image: url('../../resource/icon/document-online.png');
+}

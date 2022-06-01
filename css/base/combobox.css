@@ -1,0 +1,80 @@
+.m-combobox{
+    height: 40px;
+    border-color: #BBBBBB;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    min-width: 100px;
+    padding: 0 12px;
+    outline: unset;
+    width: 100%;
+}
+.m-combobox:focus{
+    border-color: #019160;
+}
+.m-combobox-auto-width{
+    width: 228px;
+}
+.m-combobox-50-width{
+    width: 228px;
+}
+.m-combobox-50-width .m-combobox-data{
+    width: 200px;
+    margin-left: 10px;
+}
+
+.mcombobox{
+    display: flex;
+    position: relative;
+}
+.mcombobox input{
+    border-radius: 4px;
+    padding-right: 56px;
+}
+.mcombobox input:focus~button{
+    border-color: #019160;
+    color: #019160 ;
+}
+.mcombobox button{
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-left: 1px solid #bbbbbb;
+    border-radius: 0 4px 4px 0;
+    box-sizing: border-box;
+}
+.mcombobox button:active{
+    opacity: .6;
+    color: #019160;
+}
+.mcombobox .m-combobox-data{
+    position: absolute;
+    display: none;
+    top: 100%;
+    width: 100%;
+    box-shadow: 0 3px 6px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+.mcombobox .m-combobox-item{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 34px;
+}
+.mcombobox .m-combobox-item:hover, .m-combobox-hover{
+    background-color: #bbb !important;
+    cursor: pointer;
+}
+.mcombobox .m-combobox-data-220-width{
+    width: 220px;
+}
+.mcombobox .m-combobox-151-width{
+    width: 90px;
+}
+.mcombobox .btn-no-border{
+    background-color: #ffffff;
+    border: 0
+}

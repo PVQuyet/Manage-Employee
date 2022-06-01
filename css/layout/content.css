@@ -1,0 +1,31 @@
+.content{
+    float: left;
+    width: calc(100% - 226px);
+    border-left: 1px solid #000;
+    margin-left: 225px;
+    margin-top: 47px;
+    z-index: 0;
+}
+.content .content-header{
+    display: flex;
+    padding: 12px 12px 0;
+}
+.content .content-header .content-header-text{
+    font-size: 24px;
+    font-weight: 700;
+    flex: 1;
+}
+.content .content-tools{
+    padding: 12px 12px 0;
+    display: flex;
+}
+.content .content-tools .contect-tools-left{
+    display: flex;
+    flex: 1;
+}
+.content .content-tools .m-tools-looking{
+    width: 300px;
+}
+.content .content-tools .m-combobox{
+    margin-left: 10px;
+}

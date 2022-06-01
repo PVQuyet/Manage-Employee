@@ -1,0 +1,47 @@
+.header{
+    position: fixed;
+    display: flex;
+    /* float: left; */
+    height: 47px;
+    width: calc((100% - 226px));
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    margin-left: 225px;
+    background-color: #ffffff;
+}
+.header .header-left{
+    display: flex;
+    padding: 12px 24px;
+    flex: 1;
+}
+.header .header-left .header-left-text{
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+.header .header-left .icon-down{
+    font-size: 12px;
+    line-height: 23px;
+}
+.header .header-right{
+    display: flex;
+    padding: 12px;
+}
+.header .header-right .header-right-img{
+    background-image: url('../../resource/icon/avatar-default.png');
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-right: 10px;
+}
+.header .header-right .header-right-text{
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+.header .header-left .icon-dot{
+    font-size: 12px;
+    line-height: 23px;
+}
